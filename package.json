@@ -1,0 +1,19 @@
+{
+  "name": "shopcyber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "develop": "concurrently \"cd server && npm watch \" && \" ../react && npm start\" ",
+    "install": "concurrently \"cd server && npm i\" && \"../react && npm i \" ",
+    "start" : "concurrently \"cd server && npm start \" &&  \" cd ../react && npm start",
+    "backend": "cd server && npm watch",
+    "frontend" : "cd react && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
