@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-// import SignUp from "./pages/SignUp";
+import SignUp from "./pages/SignUp.tsx";
 import Home from "./pages/Home.js";
 import { Divider } from '@material-ui/core';
 
@@ -34,19 +34,18 @@ function App() {
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
-  return 
-(
+  return (  
+  
   <ApolloProvider client={client}>
 
-  {/* // <Router>
-  //       <Routes>
-  //         <Route path="/" element={<Home />} />
-  //       </Routes>
-  // </Router> */}
+  <Router>
+        <Routes>
+         <Route path="/" element={<Home />} />
+         <Route path="/SignUp" element={<SignUp />} />
+        </Routes>
+   </Router>
   
-<div>
-  <h1>Home</h1>
-</div>
+  
    </ApolloProvider>
  )
 }
