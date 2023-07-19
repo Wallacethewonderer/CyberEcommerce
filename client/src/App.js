@@ -9,9 +9,11 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import SignUp from "./pages/SignUp.js";
-import Home from "./pages/Home.js";
 import Login from "./pages/Login.js";
+import Home from "./pages/Home.js";
+import SignUp from "./pages/createAccount.js";
+import Nav from "./components/Nav";
+import { StoreProvider } from './utils/GlobalState';
 import { Divider } from '@material-ui/core';
 
 function App() {
@@ -40,14 +42,18 @@ function App() {
   <ApolloProvider client={client}>
 
   <Router>
+  <div>
+          <StoreProvider>
+            <Nav />
         <Routes>
-         <Route path="/" element={<Login />} />
+         <Route path="/" element={<Home />} />
          <Route path="/SignUp" element={<SignUp />} />
          <Route path="/Login" element={<Login />} />
          <Route path="/Home" element={<Home />} />
         </Routes>
-   </Router>
-  
+        </StoreProvider>
+        </div>
+      </Router>
   
    </ApolloProvider>
  )
