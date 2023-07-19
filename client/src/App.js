@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SignUp from "./pages/SignUp.js";
 import Home from "./pages/Home.js";
+import Login from "./pages/Login.js";
 import { Divider } from '@material-ui/core';
 
 function App() {
