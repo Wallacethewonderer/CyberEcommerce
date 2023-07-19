@@ -15,6 +15,10 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@stripe/stripe-js": "^1.54.1",
+    "react-scripts": "^5.0.1"
   }
-
 }

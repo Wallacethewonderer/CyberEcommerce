@@ -10,6 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SignUp from "./pages/SignUp.tsx";
+import Login from './pages/Login';
 import Home from "./pages/Home.js";
 import { Divider } from '@material-ui/core';
 
@@ -40,8 +41,10 @@ function App() {
 
   <Router>
         <Routes>
-         <Route path="/" element={<Home />} />
+         <Route path="/" element={<Login />} />
          <Route path="/SignUp" element={<SignUp />} />
+         <Route path="/Login" element={<Login />} />
+         <Route path="/Home" element={<Home />} />
         </Routes>
    </Router>
   
