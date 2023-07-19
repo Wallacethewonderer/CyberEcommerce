@@ -21,7 +21,6 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
-    "typescript": "^5.1.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -29,6 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  
   },
   "eslintConfig": {
     "extends": [
