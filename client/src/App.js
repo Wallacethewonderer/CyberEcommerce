@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import SignUp from "./pages/SignUp.tsx";
+import SignUp from "./pages/SignUp.js";
 import Home from "./pages/Home.js";
 import { Divider } from '@material-ui/core';
 
