@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const imageSchema = require("./subScheme/image");
 
 const productSchema = new Schema(
 	{
@@ -17,11 +16,16 @@ const productSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		image: [imageSchema],
+		image: [{
+			type: String,
+			required: true,
+		}],
 
 		quantity: {
 			type: Int32("1"),
 			required: true,
+			unique: true,
+
 		},
 	},
 	{
