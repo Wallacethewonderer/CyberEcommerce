@@ -1,6 +1,55 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const { cartSchema } = require("./subScheme/cart");
+
+const orderHistorySchema = new Schema(
+    {
+        date: {
+            type: Date,
+            default: Date.now,
+        },
+        products: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Product',
+            },
+        ],
+        price : {
+            type: Number,
+            required: true,
+        }
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true,
+        },
+        id: false,
+    }
+);
+
+
+const cartSchema = new Schema(
+    {productid: {
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
+        required: true,
+    },
+    quantity:{
+        type:Number,
+        required:true,
+    },
+    total:{
+        type:Number,
+        required:true,
+    },},
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        },
+        id: false
+    }
+)
 
 const profileSchema = new Schema(
 	{
@@ -28,6 +77,7 @@ const profileSchema = new Schema(
 			minlength: 5,
 		},
 		cart: [cartSchema],
+		orderHistory: [orderHistorySchema],
 	},
 	{
 		toJSON: {
@@ -63,6 +113,14 @@ profileSchema.virtual("cartTotal").get(function () {
     total += item.total;
   });
   return total.toFixed(2);
+});
+
+profileSchema.virtual("orderHistoryLength").get(function () {
+	  return this.orderHistory.length;
+});
+
+profileSchema.virtual("recentOrder").get(function () {
+	  return this.orderHistory.slice(-1)[0];
 });
 
 
