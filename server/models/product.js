@@ -9,7 +9,7 @@ const productSchema = new Schema(
 			trim: true,
 		},
 		price: {
-			type: Float32("0.00"),
+			type: Number,
 			required: true,
 		},
 		description: {
@@ -22,7 +22,7 @@ const productSchema = new Schema(
 		}],
 
 		quantity: {
-			type: Int32("1"),
+			type: Number,
 			required: true,
 			unique: true,
 
