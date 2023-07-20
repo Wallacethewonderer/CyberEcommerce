@@ -1,55 +1,7 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const Order = require('./Order');
 
-const orderHistorySchema = new Schema(
-    {
-        date: {
-            type: Date,
-            default: Date.now,
-        },
-        products: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Product',
-            },
-        ],
-        price : {
-            type: Number,
-            required: true,
-        }
-    },
-    {
-        toJSON: {
-            virtuals: true,
-            getters: true,
-        },
-        id: false,
-    }
-);
-
-
-const cartSchema = new Schema(
-    {productid: {
-        type: Schema.Types.ObjectId,
-        ref: 'Product',
-        required: true,
-    },
-    quantity:{
-        type:Number,
-        required:true,
-    },
-    total:{
-        type:Number,
-        required:true,
-    },},
-    {
-        toJSON: {
-            virtuals: true,
-            getters: true
-        },
-        id: false
-    }
-)
 
 const profileSchema = new Schema(
 	{
@@ -76,8 +28,7 @@ const profileSchema = new Schema(
 			required: true,
 			minlength: 5,
 		},
-		cart: [cartSchema],
-		orderHistory: [orderHistorySchema],
+        orders: [Order.schema]
 	},
 	{
 		toJSON: {
@@ -103,7 +54,7 @@ profileSchema.methods.isCorrectPassword = async function (password) {
 	return bcrypt.compare(password, this.password);
 };
 
-profileSchema.virtual("cartLength").get(function () {
+/*profileSchema.virtual("cartLength").get(function () {
   return this.cart.length;
 });
 
@@ -121,7 +72,7 @@ profileSchema.virtual("orderHistoryLength").get(function () {
 
 profileSchema.virtual("recentOrder").get(function () {
 	  return this.orderHistory.slice(-1)[0];
-});
+});*/
 
 
 

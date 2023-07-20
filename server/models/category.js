@@ -1,29 +1,15 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require('mongoose');
 
-const categorySchema = new Schema(
-	{
-		name: {
-			type: String,
-			required: true,
-			unique: true,
-			trim: true,
-		},
-		products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
-	},
+const { Schema } = mongoose;
 
-	{
-		toJSON: {
-			virtuals: true,
-			getters: true,
-		},
-		id: false,
-	}
-);
-
-categorySchema.virtual("productLength").get(function () {
-	return this.products.length;
+const categorySchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  }
 });
 
-const Category = model("Category", categorySchema);
+const Category = mongoose.model('Category', categorySchema);
 
 module.exports = Category;
