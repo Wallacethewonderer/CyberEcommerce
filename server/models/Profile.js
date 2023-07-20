@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const { cartSchema } = require("./cart");
+const { cartSchema } = require("./subScheme/cart");
 
 const profileSchema = new Schema(
 	{
