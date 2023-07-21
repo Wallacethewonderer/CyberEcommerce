@@ -27,6 +27,11 @@ const productSchema = new Schema(
 			unique: true,
 
 		},
+		category: {
+			type: Schema.Types.ObjectId,
+			ref: 'Category',
+			required: true
+		  }
 	},
 	{
 		toJSON: {
