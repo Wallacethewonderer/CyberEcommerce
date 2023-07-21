@@ -51,9 +51,8 @@ function Nav() {
             <Typography variant="h6" component="h1" sx={{ flexGrow: 1 }}>
               <Link to="/" color="inherit" underline="none">
                 <span role="img" aria-label="shopping bag">
-                  🛍️
                 </span>
-                -Shop-Shop
+                ShopCyber
               </Link>
             </Typography>
       
