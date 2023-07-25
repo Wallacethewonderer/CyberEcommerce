@@ -75,7 +75,13 @@ db.once('open', async () => {
         }
       ]
     });
-
+  
+    await Profile.create({
+      firstName: 'Shop',
+      lastName: 'Cyber',
+      email: 'shop.cyber@testmail.com',
+      password: 'password12345'
+    });
   
     console.log('users seeded');
 
