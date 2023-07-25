@@ -11,7 +11,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SignUp from "./pages/SignUp.js";
 import Home from "./pages/Home.js";
-import Signup from "./pages/Signup.tsx";
+import Signup2 from "./pages/SignUp";
+import Login from "./pages/Login.js";
+import SignUp3 from "./pages/createAccount.js";
+import Nav from "./components/Nav";
+import { StoreProvider } from './utils/GlobalState';
 import { Divider } from '@material-ui/core';
 
 function App() {
@@ -40,14 +44,18 @@ function App() {
   <ApolloProvider client={client}>
 
   <Router>
+  <div>
+          <StoreProvider>
+            <Nav />
         <Routes>
-         <Route path="/" element={<Signup />} />
-         <Route path="/SignUp" element={<SignUp />} />
-         <Route path="/Signup" element={<Signup />} />
+         <Route path="/" element={<SignUp />} />
+         <Route path="/" element={<Home />} />
+         <Route path="/Signup" element={<SignUp />} />
          <Route path="/Home" element={<Home />} />
         </Routes>
-   </Router>
-  
+        </StoreProvider>
+        </div>
+      </Router>
   
    </ApolloProvider>
  )
