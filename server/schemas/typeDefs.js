@@ -45,6 +45,7 @@ const typeDefs = gql`
     product(_id: ID!): Product
     Profile: Profile
     order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {

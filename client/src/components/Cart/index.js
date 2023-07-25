@@ -8,6 +8,8 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
+import { Box, Typography, Button } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -17,9 +19,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (data) {
-      stripePromise.then((res) => {
-        res.redirectToCheckout({ sessionId: data.checkout.session });
-      });
+      window.location.href = '/checkout';
     }
   }, [data]);
 
@@ -49,7 +49,7 @@ const Cart = () => {
   function submitCheckout() {
     const productIds = [];
 
-    state.cart.forEach((item) => {
+   /* state.cart.forEach((item) => {
       for (let i = 0; i < item.purchaseQuantity; i++) {
         productIds.push(item._id);
       }
@@ -57,7 +57,9 @@ const Cart = () => {
 
     getCheckout({
       variables: { products: productIds },
-    });
+    });*/
+
+    window.location.href = '/checkout';
   }
 
   if (!state.cartOpen) {
@@ -70,38 +72,45 @@ const Cart = () => {
     );
   }
 
+  function submitCheckout() {
+    // ... (your existing code)
+
+    // Instead of calling getCheckout, directly navigate to the "/checkout" page
+    window.location.href = '/checkout';
+  }
   return (
-    <div className="cart">
-      <div className="close" onClick={toggleCart}>
-        [close]
-      </div>
-      <h2>Shopping Cart</h2>
+    <Box className="cart">
+      <Box className="close" onClick={toggleCart}>
+        <CloseIcon /> {/* Replace [close] with the close icon */}
+      </Box>
+      <Typography variant="h2">Shopping Cart</Typography>
       {state.cart.length ? (
-        <div>
+        <Box>
           {state.cart.map((item) => (
             <CartItem key={item._id} item={item} />
           ))}
 
-          <div className="flex-row space-between">
+          <Box display="flex" justifyContent="space-between">
             <strong>Total: ${calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
-              
+              <Button variant="contained" onClick={submitCheckout}>
+                Checkout
+              </Button>
             ) : (
-              <span>(log in to check out)</span>
+              <Typography>(log in to check out)</Typography>
             )}
-          </div>
-        </div>
+          </Box>
+        </Box>
       ) : (
-        <h3>
+        <Typography variant="h3">
           <span role="img" aria-label="shocked">
             😱
           </span>
           You haven't added anything to your cart yet!
-        </h3>
+        </Typography>
       )}
-    </div>
+    </Box>
   );
 };
 
