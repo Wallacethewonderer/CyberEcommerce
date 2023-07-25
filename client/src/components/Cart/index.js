@@ -103,7 +103,7 @@ const Cart = () => {
           </Box>
         </Box>
       ) : (
-        <Typography variant="h3">
+        <Typography variant="h6">
           <span role="img" aria-label="shocked">
             😱
           </span>
