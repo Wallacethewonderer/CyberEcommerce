@@ -11,13 +11,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SignUp from "./pages/SignUp.js";
 import Home from "./pages/Home.js";
-import Signup2 from "./pages/SignUp";
 import Login from "./pages/Login.js";
-import SignUp3 from "./pages/createAccount.js";
 import Checkout from "./pages/checkout/Checkout.js";
 import Nav from "./components/Nav";
 import { StoreProvider } from './utils/GlobalState';
-import { Divider } from '@material-ui/core';
 
 function App() {
   const httpLink = createHttpLink({
@@ -54,7 +51,7 @@ function App() {
          <Route path="/Login" element={<Login />} />
          <Route path="/Signup" element={<SignUp />} />
          <Route path="/Checkout" element={<Checkout />} />
-         {/* <Route path="/Home" element={<Home />} /> */}
+          <Route path="/Home" element={<Home />} /> 
         </Routes>
         </StoreProvider>
         </div>
