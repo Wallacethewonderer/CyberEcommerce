@@ -50,8 +50,6 @@ function App() {
             <Nav />
         <Routes>
 
-         <Route path="/" element={<SignUp />} />
-
          <Route path="/" element={<Home />} />
          <Route path="/Login" element={<Login />} />
          <Route path="/Signup" element={<SignUp />} />
