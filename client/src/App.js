@@ -12,6 +12,7 @@ import './App.css';
 import SignUp from "./pages/SignUp.js";
 import Home from "./pages/Home.js";
 import Login from "./pages/Login.js";
+import OrderHistory from "./pages/orderHistory"
 import Checkout from "./pages/checkout/Checkout.js";
 import Nav from "./components/Nav";
 import { StoreProvider } from './utils/GlobalState';
@@ -51,7 +52,7 @@ function App() {
          <Route path="/Login" element={<Login />} />
          <Route path="/Signup" element={<SignUp />} />
          <Route path="/Checkout" element={<Checkout />} />
-          <Route path="/Home" element={<Home />} /> 
+          <Route path="/OrderHistory" element={<OrderHistory />} /> 
         </Routes>
         </StoreProvider>
         </div>
