@@ -14,6 +14,7 @@ import Home from "./pages/Home.js";
 import Signup2 from "./pages/SignUp";
 import Login from "./pages/Login.js";
 import SignUp3 from "./pages/createAccount.js";
+import Checkout from "./pages/checkout/Checkout.js";
 import Nav from "./components/Nav";
 import { StoreProvider } from './utils/GlobalState';
 import { Divider } from '@material-ui/core';
@@ -48,10 +49,14 @@ function App() {
           <StoreProvider>
             <Nav />
         <Routes>
+
          <Route path="/" element={<SignUp />} />
+
          <Route path="/" element={<Home />} />
+         <Route path="/Login" element={<Login />} />
          <Route path="/Signup" element={<SignUp />} />
-         <Route path="/Home" element={<Home />} />
+         <Route path="/Checkout" element={<Checkout />} />
+         {/* <Route path="/Home" element={<Home />} /> */}
         </Routes>
         </StoreProvider>
         </div>
