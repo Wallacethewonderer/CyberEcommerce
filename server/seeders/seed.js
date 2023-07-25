@@ -6,10 +6,11 @@ db.once('open', async () => {
   try {
     await Category.deleteMany({});
     const categories = await Category.insertMany([
-      { name: 'Home goods' },
-      { name: 'Books' },
-      { name: 'Toys' },
-      { name: 'Electronics' },
+    { name: 'Food' },
+    { name: 'Household Supplies' },
+    { name: 'Electronics' },
+    { name: 'Books' },
+    { name: 'Toys' }
     ]);
   
     console.log('categories- seeded');
@@ -64,8 +65,8 @@ db.once('open', async () => {
     await Profile.deleteMany({});
 
     await Profile.create({
-      firstname: 'Radhika',
-      lastname: 'test',
+      firstName: 'Radhika',
+      lastName: 'test',
       email: 'Radhika.test@testmail.com',
       password: 'password12345',
       orders: [
@@ -74,13 +75,7 @@ db.once('open', async () => {
         }
       ]
     });
-  
-    await Profile.create({
-      firstname: 'Shop',
-      lastname: 'Cyber',
-      email: 'shop.cyber@testmail.com',
-      password: 'password12345'
-    });
+
   
     console.log('users seeded');
 
