@@ -8,19 +8,16 @@ const profileSchema = new Schema(
 		firstname: {
 			type: String,
 			required: true,
-			unique: true,
 			trim: true,
 		},
 		lastname: {
 			type: String,
 			required: true,
-			unique: true,
 			trim: true,
 		},
 		email: {
 			type: String,
 			required: true,
-			unique: true,
 			match: [/.+@.+\..+/, "Must match an email address!"],
 		},
 		password: {
@@ -29,13 +26,6 @@ const profileSchema = new Schema(
 			minlength: 5,
 		},
         orders: [Order.schema]
-	},
-	{
-		toJSON: {
-			virtuals: true,
-			getters: true,
-		},
-		id: false,
 	}
 );
 
