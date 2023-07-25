@@ -40,15 +40,18 @@ export default function SignIn() {
   const [login, { error }] = useMutation(LOGIN);
 
 
+
+
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const {email , password } = formState;
     try {
       const mutationResponse = await login({
        // variables: { email: formState.email, password: formState.password },
         //TO-DO hardcoded username and password as its not working
-        variables: { email: 'Radhika.test@testmail.com', password: 'password12345' },
+        variables: { email: data.get('email'), password: data.get('password') },
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
