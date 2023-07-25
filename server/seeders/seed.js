@@ -59,10 +59,30 @@ db.once('open', async () => {
       },
      
     ]);
-    console.log('products seeded');
-
+  
+    console.log('products- seeded');
     await Profile.deleteMany({});
-    await Profile.create();
+
+    await Profile.create({
+      firstname: 'Radhika',
+      lastname: 'test',
+      email: 'Radhika.test@testmail.com',
+      password: 'password12345',
+      orders: [
+        {
+          products: [products[0]._id, products[0]._id, products[1]._id]
+        }
+      ]
+    });
+  
+    await Profile.create({
+      firstname: 'Shop',
+      lastname: 'Cyber',
+      email: 'shop.cyber@testmail.com',
+      password: 'password12345'
+    });
+  
+    console.log('users seeded');
 
     console.log('all done!');
     process.exit(0);

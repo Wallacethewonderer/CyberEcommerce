@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +12,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 function Copyright(props) {
   return (
@@ -31,12 +36,33 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN);
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    const {email , password } = formState;
+    try {
+      const mutationResponse = await login({
+       // variables: { email: formState.email, password: formState.password },
+        //TO-DO hardcoded username and password as its not working
+        variables: { email: 'Radhika.test@testmail.com', password: 'password12345' },
+      });
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+   
+  
+    const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
     });
   };
 
