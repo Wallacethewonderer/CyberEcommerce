@@ -56,11 +56,6 @@ export default function Album() {
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <AppBar position="relative">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-      ShopCyber: Embrace the Future of Shopping!
-          </Typography>
-        </Toolbar>
       </AppBar>
       <main>
         {/* Hero unit */}
