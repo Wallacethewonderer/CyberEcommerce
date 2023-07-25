@@ -1,5 +1,5 @@
 const Profile = require('./Profile');
-const Product = require('./Product');
+const Product = require('./product');
 const Category = require('./Category');
 const Order = require('./Order');
 
